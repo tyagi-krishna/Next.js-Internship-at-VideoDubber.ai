@@ -1,9 +1,24 @@
-import { Button, Group } from "@mantine/core";
+import { useState } from 'react';
+import { AppShell } from '@mantine/core';
+import { NavbarMinimal } from '../components/NavbarMinimal';
+import { ContentPage } from '../components/ContentPage';
 
-export default function IndexPage() {
+export default function HomePage() {
+  const [opened, setOpened] = useState(true);
+
+  const toggleNavbar = () => setOpened((o) => !o);
+
   return (
-    <Group mt={50} justify="center">
-      <Button size="xl">Welcome to Mantine!</Button>
-    </Group>
+    <AppShell
+      navbar={{ width: 80, breakpoint: 'sm', collapsed: { desktop: !opened, mobile: !opened } }}
+      padding={0}
+    >
+      <AppShell.Navbar>
+        <NavbarMinimal opened={opened} toggleNavbar={toggleNavbar} />
+      </AppShell.Navbar>
+      <AppShell.Main>
+        <ContentPage opened={opened} toggleNavbar={toggleNavbar} />
+      </AppShell.Main>
+    </AppShell>
   );
 }

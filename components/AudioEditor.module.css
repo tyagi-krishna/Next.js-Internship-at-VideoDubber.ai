@@ -1,0 +1,37 @@
+.audioEditor {
+  width: 100%;
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: var(--mantine-spacing-xl);
+}
+
+.waveform {
+  width: 100%;
+  background-color: #1d1a26;
+  border-radius: var(--mantine-radius-md);
+  padding: var(--mantine-spacing-md);
+}
+
+.controls {
+  margin-top: var(--mantine-spacing-md);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.timeDisplay {
+  font-size: 1rem;
+  color: var(--mantine-color-gray-5);
+}
+
+.buttonGroup {
+  display: flex;
+  gap: var(--mantine-spacing-sm);
+}
+
+.menuButton {
+  position: fixed;
+  top: var(--mantine-spacing-md);
+  left: var(--mantine-spacing-md);
+  z-index: 200;
+}
