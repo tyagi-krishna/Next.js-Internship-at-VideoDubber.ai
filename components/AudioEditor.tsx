@@ -1,7 +1,7 @@
 import React, { useRef, useEffect, useState } from 'react';
-import { Box, Button, Group, Text, ActionIcon, Slider } from '@mantine/core';
-import { MantineLogo } from '@mantine/core';
+import { Box, Button, Group, Text, ActionIcon } from '@mantine/core';
 import WaveSurfer from 'wavesurfer.js';
+import { MantineLogo } from '@mantinex/mantine-logo';
 import RegionsPlugin from 'wavesurfer.js/dist/plugins/regions';
 import classes from './AudioEditor.module.css';
 
@@ -32,7 +32,6 @@ export function AudioEditor({ audioFile, opened, toggleNavbar }: AudioEditorProp
         cursorColor: '#ffffff',
         barWidth: 2,
         barRadius: 3,
-        responsive: true,
         height: 150,
         backend: 'WebAudio',
         plugins: [regionsPlugin.current],
@@ -185,9 +184,7 @@ export function AudioEditor({ audioFile, opened, toggleNavbar }: AudioEditorProp
       )}
       <div ref={waveformRef} className={classes.waveform} />
 
-      
-
-      <Group className={classes.controls} position="apart">
+      <Group className={classes.controls}>
         <Text>Start: {formatTime(startTime)}</Text>
         <Group>
           <Button onClick={handlePlayPause}>{isPlaying ? 'Pause' : 'Play'}</Button>

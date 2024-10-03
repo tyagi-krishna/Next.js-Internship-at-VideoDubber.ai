@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
-import { Box, Title, Text, Button, Group, FileInput, ActionIcon } from '@mantine/core';
+import { Box, Button, Group, Text, ActionIcon, FileInput } from '@mantine/core';
 import { IconUpload } from '@tabler/icons-react';
-import { MantineLogo } from '@mantinex/mantine-logo';
+import { MantineLogo } from '@mantinex/mantine-logo'; // Corrected import for MantineLogo
 import classes from './ContentPage.module.css';
 import AudioEditor from './AudioEditor';
 
@@ -32,24 +32,30 @@ export function ContentPage({ opened, toggleNavbar }: ContentPageProps) {
         </ActionIcon>
       )}
       <Box className={classes.content}>
-        <Group className={classes.topOptions} position="center" spacing="xl">
-          <Button variant="subtle" className={classes.topButton}>How It Works</Button>
-          <Button variant="subtle" className={classes.topButton}>Donate</Button>
+        <Group className={classes.topOptions} style={{ justifyContent: 'center' }}>
+          <Button variant="subtle" className={classes.topButton} style={{ marginRight: '1rem' }}>
+            How It Works
+          </Button>
+          <Button variant="subtle" className={classes.topButton}>
+            Donate
+          </Button>
         </Group>
 
         {!selectedFile ? (
           <Box className={classes.centerContent}>
-            <Title order={1} className={classes.mainTitle}>Audio Cutter</Title>
+            <Text className={classes.mainTitle}>Audio Cutter</Text>
             <Text className={classes.subtitle}>
               Free editor to trim and cut any audio file online
             </Text>
 
-            <FileInput
-              placeholder="Browse my files"
-              icon={<IconUpload size="1.2rem" />}
-              accept="audio/*"
-              onChange={handleFileChange}
-            />
+            <Box style={{ display: 'flex', alignItems: 'center' }}>
+              <IconUpload size="1.2rem" style={{ marginRight: '0.5rem' }} />
+              <FileInput
+                placeholder="Browse my files"
+                accept="audio/*"
+                onChange={handleFileChange}
+              />
+            </Box>
           </Box>
         ) : (
           <AudioEditor audioFile={selectedFile} opened={opened} toggleNavbar={toggleNavbar} />
@@ -57,23 +63,23 @@ export function ContentPage({ opened, toggleNavbar }: ContentPageProps) {
 
         {!selectedFile && (
           <Box className={classes.infoSection}>
-            <Title order={2} className={classes.infoTitle}>How to cut audio</Title>
+            <Text className={classes.infoTitle}>How to cut audio</Text>
             <Box className={classes.infoBox}>
               <Text className={classes.infoText}>
-                This app can be used to trim and/or cut audio tracks, remove an audio fragments. Fade in and fade out your music easily to make the audio harmoniously.
+                This app can be used to trim and/or cut audio tracks, remove audio fragments. Fade in and fade out your music easily to make the audio harmoniously.
               </Text>
               <Text className={classes.infoText} mt="md">
-                It fast and easy to use. You can save the audio file in any format (codec parameters are configured)
+                It is fast and easy to use. You can save the audio file in any format (codec parameters are configured).
               </Text>
               <Text className={classes.infoText} mt="md">
-                It works directly in the browser, no needs to install any software, is available for mobile devices.
+                It works directly in the browser, no need to install any software, and is available for mobile devices.
               </Text>
             </Box>
 
-            <Title order={2} className={classes.infoTitle} mt="xl">Privacy and security guaranteed</Title>
+            <Text className={classes.infoTitle} mt="xl">Privacy and security guaranteed</Text>
             <Box className={classes.infoBox}>
               <Text className={classes.infoText}>
-                This is serverless app, your files doesn't leave your device
+                This is a serverless app; your files do not leave your device.
               </Text>
             </Box>
           </Box>
